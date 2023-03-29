@@ -15,8 +15,6 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    private int maxCar = 10;
-
     public Car() {
     }
 
@@ -47,9 +45,5 @@ public class Car {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getMaxCar() {
-        return maxCar;
     }
 }

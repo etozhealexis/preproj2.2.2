@@ -6,8 +6,7 @@
 </head>
 <body>
 <div th:each="car : ${cars}">
-    <a th:href="@{/car?count=${count}}"
-       th:text="${car.getModel() + ', ' + car.getSeries()}">car</a>
+    <a th:text="${car.getModel() + ', ' + car.getSeries()}">car</a>
 </div>
 </body>
 </html>

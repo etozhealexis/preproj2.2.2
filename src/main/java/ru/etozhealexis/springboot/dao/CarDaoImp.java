@@ -17,10 +17,14 @@ public class CarDaoImp implements CarDao {
         this.sessionFactory = sessionFactory;
     }
 
+    @SuppressWarnings("unchecked")
     public List<Car> showCars(int count) {
-        List<Car> allCars = sessionFactory.getCurrentSession().createNativeQuery("Select * FROM cars")
+        List<Car> allCars = sessionFactory.getCurrentSession().createQuery("FROM Car")
                 .getResultList();
 
+        for (Car car : allCars) {
+            System.out.println(car.getModel() + " " + car.getSeries());
+        }
         return allCars.stream()
                 .limit(count)
                 .collect(Collectors.toList());
