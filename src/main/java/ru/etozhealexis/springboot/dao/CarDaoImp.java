@@ -18,7 +18,8 @@ public class CarDaoImp implements CarDao {
     }
 
     public List<Car> showCars(int count) {
-        List<Car> allCars = sessionFactory.getCurrentSession().createQuery("FROM Car").getResultList();
+        List<Car> allCars = sessionFactory.getCurrentSession().createNativeQuery("Select * FROM cars")
+                .getResultList();
 
         return allCars.stream()
                 .limit(count)
