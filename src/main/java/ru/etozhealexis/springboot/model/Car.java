@@ -1,49 +1,60 @@
 package ru.etozhealexis.springboot.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cars")
 public class Car {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_id")
-    private Long id;
+    private long id;
 
-    @Column(name = "model")
+    @Column()
     private String model;
 
-    @Column(name = "series")
+    @Column()
     private int series;
 
-    public Car() {
-    }
+    @Column()
+    private String manufacturer;
 
-    public Car(String model, int series) {
+    public Car(){}
+
+    public Car(String model, int series, String manufacturer) {
         this.model = model;
         this.series = series;
+        this.manufacturer = manufacturer;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getModel() {
         return model;
     }
 
-    public int getSeries() {
-        return series;
-    }
-
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public int getSeries() {
+        return series;
     }
 
     public void setSeries(int series) {
         this.series = series;
     }
 
-    public Long getId() {
-        return id;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

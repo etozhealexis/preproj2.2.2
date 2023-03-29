@@ -6,6 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" value="7d9f4044-eef3-49c3-9999-23c7667a8f0f" />
+          <factory-entry name="noname-a.xml@0" value="7d9f4044-eef3-49c3-9999-23c7667a8f0f" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
