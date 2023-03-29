@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:each="car : ${cars}">
-    <div th:text="${car.model + ', ' + car.series}">car</div>
+    <div th:text="${car.model + ', ' + car.series + ', ' + car.manufacturer}">car</div>
 </div>
 </body>
 </html>
