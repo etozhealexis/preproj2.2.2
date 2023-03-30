@@ -37,6 +37,10 @@ public class CarServiceImp implements CarService {
             return listCars(count);
         }
 
+        if (count == null) {
+            return carDao.getCars(sortParam);
+        }
+
         return carDao.getCars(count, sortParam);
     }
 

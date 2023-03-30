@@ -33,18 +33,20 @@ public class CarDaoImp implements CarDao {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Car> getCars(Integer count, String sortParam) {
-         if (count == null) {
-             return entityManager.createQuery("SELECT c FROM Car c ORDER BY c." + sortParam)
-                     .getResultList();
-         }
-
+    public List<Car> getCars(int count, String sortParam) {
         if (count <= 0) {
-            return getCars(count);
+            return new ArrayList<>();
         }
 
         return entityManager.createQuery("SELECT c FROM Car c ORDER BY c." + sortParam)
                 .setMaxResults(count)
+                .getResultList();
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Car> getCars(String sortParam) {
+        return entityManager.createQuery("SELECT c FROM Car c ORDER BY c." + sortParam)
                 .getResultList();
     }
 }
