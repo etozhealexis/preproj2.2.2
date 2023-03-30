@@ -14,8 +14,6 @@ public class CarDaoImp implements CarDao {
 
     @SuppressWarnings("unchecked")
     public List<Car> getCars() {
-        List<Car> allCars = entityManager.createQuery("SELECT c FROM Car c").getResultList();
-
         return entityManager.createQuery("SELECT c FROM Car c").getResultList();
     }
 }
