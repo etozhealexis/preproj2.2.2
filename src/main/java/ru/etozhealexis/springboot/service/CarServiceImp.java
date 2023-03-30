@@ -25,7 +25,7 @@ public class CarServiceImp implements CarService {
     public List<Car> listCarsLimited(Integer count) {
         List<Car> allCars = carDao.getCars();
 
-        count = maxCount > count ? count : null;
+        count = (count != null) && (maxCount > count) ? count : null;
 
         return count == null ? allCars :
                 allCars.stream()
