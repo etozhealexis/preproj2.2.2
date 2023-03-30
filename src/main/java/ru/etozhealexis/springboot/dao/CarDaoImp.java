@@ -34,6 +34,11 @@ public class CarDaoImp implements CarDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Car> getCars(Integer count, String sortParam) {
+         if (count == null) {
+             return entityManager.createQuery("SELECT c FROM Car c ORDER BY c." + sortParam)
+                     .getResultList();
+         }
+
         if (count <= 0) {
             return getCars(count);
         }
