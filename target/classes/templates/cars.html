@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>List of cars:</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <div th:each="car : ${cars}">
-    <div th:text="${car.model + ', ' + car.series}">car</div>
+    <div th:text="${car.model + ', ' + car.series + ', ' + car.manufacturer}">car</div>
 </div>
 </body>
 </html>

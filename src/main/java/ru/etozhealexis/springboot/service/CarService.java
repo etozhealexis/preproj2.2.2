@@ -5,5 +5,5 @@ import ru.etozhealexis.springboot.model.Car;
 import java.util.List;
 
 public interface CarService {
-    List<Car> listCarsLimited(int count);
+    List<Car> listCarsLimited(Integer count);
 }

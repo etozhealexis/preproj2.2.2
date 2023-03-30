@@ -22,14 +22,17 @@ public class CarServiceImp implements CarService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Car> listCarsLimited(int count) {
+    public List<Car> listCarsLimited(Integer count) {
         List<Car> allCars = carDao.getCars();
 
-        if (maxCount < count) {
-            count = maxCount;
+        if (count == null) {
+            return allCars;
         }
 
-        return allCars.stream()
+        count = maxCount < count ? maxCount : count;
+
+        return allCars
+                .stream()
                 .limit(count)
                 .collect(Collectors.toList());
     }
