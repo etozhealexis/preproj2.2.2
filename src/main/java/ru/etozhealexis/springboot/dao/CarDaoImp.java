@@ -15,28 +15,32 @@ public class CarDaoImp implements CarDao {
 
     @SuppressWarnings("unchecked")
     public List<Car> getCars() {
-        return entityManager.createQuery("SELECT c FROM Car c").getResultList();
+        return entityManager.createQuery("SELECT c FROM Car c")
+                .getResultList();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Car> getCars(int count) {
-        if (count < 0) {
+        if (count <= 0) {
             return new ArrayList<>();
         }
 
-        return entityManager.createQuery("SELECT c FROM Car c").setMaxResults(count).getResultList();
+        return entityManager.createQuery("SELECT c FROM Car c")
+                .setMaxResults(count)
+                .getResultList();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Car> getCars(Integer count, String sortParam) {
-        if (count < 0) {
+        if (count <= 0) {
             return getCars(count);
         }
 
-        return entityManager.createQuery("SELECT c FROM Car c ORDER BY (:sortParam)")
-                .setParameter("sortParam", sortParam)
+        String queryStr = "SELECT c FROM Car c ORDER BY :sortParam";
+        queryStr = queryStr.replace(":sortParam", "c." + sortParam);
+        return entityManager.createQuery(queryStr)
                 .setMaxResults(count)
                 .getResultList();
     }
