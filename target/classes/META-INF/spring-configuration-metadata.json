@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "car-service",
+      "type": "ru.etozhealexis.springboot.service.CarServiceImp",
+      "sourceType": "ru.etozhealexis.springboot.service.CarServiceImp"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

@@ -38,9 +38,7 @@ public class CarDaoImp implements CarDao {
             return getCars(count);
         }
 
-        String queryStr = "SELECT c FROM Car c ORDER BY :sortParam";
-        queryStr = queryStr.replace(":sortParam", "c." + sortParam);
-        return entityManager.createQuery(queryStr)
+        return entityManager.createQuery("SELECT c FROM Car c ORDER BY c." + sortParam)
                 .setMaxResults(count)
                 .getResultList();
     }
