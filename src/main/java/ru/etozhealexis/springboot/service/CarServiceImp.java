@@ -25,13 +25,10 @@ public class CarServiceImp implements CarService {
     public List<Car> listCarsLimited(Integer count) {
         List<Car> allCars = carDao.getCars();
 
-        if (count == null) {
-            return allCars;
-        }
+        count = maxCount > count ? count : null;
 
-        count = maxCount < count ? maxCount : count;
-
-        return allCars
+        return count == null ? allCars :
+                allCars
                 .stream()
                 .limit(count)
                 .collect(Collectors.toList());
