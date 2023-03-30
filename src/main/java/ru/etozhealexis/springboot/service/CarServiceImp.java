@@ -24,7 +24,8 @@ public class CarServiceImp implements CarService {
     @Override
     public List<Car> listCarsLimited(Integer count) {
         count = (count != null) && maxCount <= count ? null : count;
-        return count == null ? carDao.getCars() :
+        return count == null ?
+                carDao.getCars() :
                 carDao.getCarsLimited(count);
     }
 
