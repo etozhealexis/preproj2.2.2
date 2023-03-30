@@ -1,12 +1,10 @@
 package ru.etozhealexis.springboot.dao;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.etozhealexis.springboot.model.Car;
 
-import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
@@ -22,6 +20,11 @@ public class CarDaoImp implements CarDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Car> getCarsLimited(int count) {
-        return entityManager.createQuery("SELECT c FROM Car c").setMaxResults(count).getResultList();
+        try {
+            return entityManager.createQuery("SELECT c FROM Car c").setMaxResults(count).getResultList();
+        } catch (IllegalArgumentException e) {
+            return entityManager.createQuery("SELECT c FROM Car c").setMaxResults(0).getResultList();
+        }
+
     }
 }
