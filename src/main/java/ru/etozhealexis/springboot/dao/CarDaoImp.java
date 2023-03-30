@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.etozhealexis.springboot.model.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -21,7 +22,7 @@ public class CarDaoImp implements CarDao {
     @Override
     public List<Car> getCars(int count) {
         if (count < 0) {
-            return entityManager.createQuery("SELECT c FROM Car c").setMaxResults(0).getResultList();
+            return new ArrayList<>();
         }
 
         return entityManager.createQuery("SELECT c FROM Car c").setMaxResults(count).getResultList();
