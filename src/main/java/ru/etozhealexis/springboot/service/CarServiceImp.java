@@ -9,7 +9,6 @@ import ru.etozhealexis.springboot.dao.CarDao;
 import ru.etozhealexis.springboot.model.Car;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImp implements CarService {
@@ -22,11 +21,22 @@ public class CarServiceImp implements CarService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Car> listCarsLimited(Integer count) {
-        count = (count != null) && maxCount <= count ? null : count;
-        return count == null ?
-                carDao.getCars() :
-                carDao.getCarsLimited(count);
+    public List<Car> listCars(Integer count) {
+        if (count == null || maxCount <= count) {
+            return carDao.getCars();
+        }
+
+        return carDao.getCars(count);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Car> listCars(Integer count, String sortParam) {
+        if (sortParam == null) {
+            return listCars(count);
+        }
+
+        return carDao.getCars(count, sortParam);
     }
 
 }

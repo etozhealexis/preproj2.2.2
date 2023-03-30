@@ -19,8 +19,9 @@ public class CarController {
 
     @GetMapping("/cars")
     public String cars(@RequestParam(name = "count", required = false) Integer count,
+                       @RequestParam(name = "sortParam", required = false) String sortParam,
                        Model model) {
-        model.addAttribute("cars", carService.listCarsLimited(count));
+        model.addAttribute("cars", carService.listCars(count, sortParam));
         return "cars";
     }
 }
