@@ -28,10 +28,9 @@ public class CarServiceImp implements CarService {
         count = maxCount > count ? count : null;
 
         return count == null ? allCars :
-                allCars
-                .stream()
-                .limit(count)
-                .collect(Collectors.toList());
+                allCars.stream()
+                        .limit(count)
+                        .collect(Collectors.toList());
     }
 
 }
