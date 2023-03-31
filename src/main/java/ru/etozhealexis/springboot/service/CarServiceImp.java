@@ -32,7 +32,7 @@ public class CarServiceImp implements CarService {
     @Transactional(readOnly = true)
     @Override
     public List<Car> listCars(Integer count, String sortParam) {
-        if (!carProperties.getSortParams().contains(sortParam)) {
+        if (sortParam == null || !carProperties.getSortParams().contains(sortParam)) {
             return listCars(count);
         }
 
