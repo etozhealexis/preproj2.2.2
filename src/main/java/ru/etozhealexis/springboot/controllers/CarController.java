@@ -7,7 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import ru.etozhealexis.springboot.model.Car;
 import ru.etozhealexis.springboot.service.CarService;
+
+import java.util.List;
 
 @Controller
 public class CarController {
@@ -29,5 +33,12 @@ public class CarController {
 
         model.addAttribute("cars", carService.listCars(count, sortParam));
         return "cars";
+    }
+
+    @GetMapping("/cars_json")
+    @ResponseBody
+    public List<Car> carsJson(@RequestParam(name = "count", required = false) Integer count,
+                              @RequestParam(name = "sortParam", required = false) String sortParam) {
+        return carService.listCars(count, sortParam);
     }
 }
