@@ -1,0 +1,6 @@
+car:
+  maxCar: 10
+  sortParams:
+    - model
+    - series
+    - manufacturer
