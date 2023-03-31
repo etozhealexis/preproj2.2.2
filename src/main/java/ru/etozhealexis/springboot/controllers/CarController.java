@@ -2,6 +2,7 @@ package ru.etozhealexis.springboot.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,11 @@ public class CarController {
     public String cars(@RequestParam(name = "count", required = false) Integer count,
                        @RequestParam(name = "sortParam", required = false) String sortParam,
                        Model model) {
+        if (carService.checkForBadRequest(sortParam)) {
+            model.addAttribute("error", HttpStatus.BAD_REQUEST);
+            return "error";
+        }
+
         model.addAttribute("cars", carService.listCars(count, sortParam));
         return "cars";
     }

@@ -8,4 +8,6 @@ public interface CarService {
     List<Car> listCars(Integer count);
 
     List<Car> listCars(Integer count, String sortParam);
+
+    boolean checkForBadRequest(String sortParam);
 }

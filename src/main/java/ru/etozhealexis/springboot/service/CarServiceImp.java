@@ -48,4 +48,8 @@ public class CarServiceImp implements CarService {
         return carDao.getCars(count, sortParam);
     }
 
+    @Override
+    public boolean checkForBadRequest(String sortParam) {
+        return sortParam != null && !carProperties.getSortParams().contains(sortParam);
+    }
 }
