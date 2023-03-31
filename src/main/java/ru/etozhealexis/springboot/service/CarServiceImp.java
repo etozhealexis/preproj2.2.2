@@ -8,6 +8,7 @@ import ru.etozhealexis.springboot.dao.CarDao;
 import ru.etozhealexis.springboot.model.Car;
 import ru.etozhealexis.springboot.properties.CarProperties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,8 +33,12 @@ public class CarServiceImp implements CarService {
     @Transactional(readOnly = true)
     @Override
     public List<Car> listCars(Integer count, String sortParam) {
-        if (sortParam == null || !carProperties.getSortParams().contains(sortParam)) {
+        if (sortParam == null) {
             return listCars(count);
+        }
+
+        if (!carProperties.getSortParams().contains(sortParam)) {
+            return new ArrayList<>();
         }
 
         if (count == null || carProperties.getMaxCar() <= count) {
