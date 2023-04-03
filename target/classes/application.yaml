@@ -1,13 +1,14 @@
-spring.datasource:
-  url: jdbc:postgresql://localhost:5432/postgres
-  username: postgres
-  password: 12345
-  driver-class-name: org.postgresql.Driver
-spring.jpa:
-  database-platform: org.hibernate.dialect.PostgreSQLDialect
-  show-sql: true
-  database: postgresql
-  hibernate.ddl-auto: update
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 12345
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    database: postgresql
+    hibernate.ddl-auto: update
 car:
   maxCar: 10
   sortParams:

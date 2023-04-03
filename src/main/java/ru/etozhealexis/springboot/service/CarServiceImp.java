@@ -44,7 +44,7 @@ public class CarServiceImp implements CarService {
     }
 
     @Override
-    public boolean checkForBadRequest(String sortParam) {
+    public boolean validateSortParam(String sortParam) {
         return sortParam != null && !carProperties.getSortParams().contains(sortParam);
     }
 }

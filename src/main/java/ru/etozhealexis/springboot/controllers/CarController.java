@@ -26,7 +26,7 @@ public class CarController {
     public String cars(@RequestParam(name = "count", required = false) Integer count,
                        @RequestParam(name = "sortParam", required = false) String sortParam,
                        Model model) {
-        if (carService.checkForBadRequest(sortParam)) {
+        if (carService.validateSortParam(sortParam)) {
             model.addAttribute("error", HttpStatus.BAD_REQUEST);
             return "error";
         }
