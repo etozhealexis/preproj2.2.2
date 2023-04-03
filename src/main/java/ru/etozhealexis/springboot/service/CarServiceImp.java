@@ -19,7 +19,6 @@ public class CarServiceImp implements CarService {
     @Autowired
     private CarProperties carProperties;
 
-    @Transactional(readOnly = true)
     @Override
     public List<Car> listCars(Integer count) {
         if (count == null || carProperties.getMaxCar() <= count) {
@@ -29,7 +28,6 @@ public class CarServiceImp implements CarService {
         return carDao.getCars(count);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<Car> listCars(Integer count, String sortParam) {
         if (sortParam == null) {
